@@ -1,6 +1,5 @@
 package com.example.myweb.controller;
 
-<<<<<<< HEAD
 import com.example.myweb.model.Board;
 import com.example.myweb.repository.BoardRepository;
 import com.example.myweb.validator.BoardValidator;
@@ -18,17 +17,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-=======
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
->>>>>>> DoKkang/master
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 
-<<<<<<< HEAD
     @Autowired
     private BoardRepository boardRepository;
 
@@ -36,7 +29,7 @@ public class BoardController {
     private BoardValidator boardValidator;
 
     @GetMapping("/list")
-    public String list(Model model, @PageableDefault(size = 15) Pageable pageable,
+    public String list(Model model, @PageableDefault(size = 10) Pageable pageable,
                        @RequestParam(required = false,defaultValue = "") String searchText) {
         //Page<Board> boards = boardRepository.findAll(pageable);
         Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(searchText,searchText,pageable);
@@ -68,10 +61,4 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
-=======
-    @GetMapping("/list")
-    public String list() {
-        return "/board/list";
-    }
->>>>>>> DoKkang/master
 }
